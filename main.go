@@ -4,15 +4,30 @@ import (
 	"fmt"
 	"godoku/sudoku"
 	"io/ioutil"
+	"os"
+	"path/filepath"
 	"strings"
 )
 
 func main() {
-	file, error := ioutil.ReadFile("unsolved")
+	if len(os.Args) < 2 {
+		fmt.Println("Missing file parameter, please provide a path to file")
+		return
+	}
 
-	if error != nil {
-		fmt.Println(error)
-		panic(error)
+	sudokuFilePath, filepathErr := filepath.Abs(os.Args[1])
+	if filepathErr != nil {
+		fmt.Println(filepathErr)
+		return
+	}
+
+	fmt.Println("Searching for file '", sudokuFilePath, "'")
+	fmt.Println()
+
+	file, readfileErr := ioutil.ReadFile(sudokuFilePath)
+	if readfileErr != nil {
+		fmt.Println(readfileErr)
+		return
 	}
 
 	unsolved := string(file)
