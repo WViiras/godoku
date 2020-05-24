@@ -1,25 +1,28 @@
 package sudoku
 
-import "fmt"
+import (
+	"fmt"
+)
 
+// Game will hold the grid and present a solution
 type Game struct {
-	gameArea *GameArea
+	grid *Grid
 }
 
-func (game *Game) PopulateGameArea(unsolvedFields []string) {
-	game.gameArea = new(GameArea)
+// PopulateGrid fills Grid with known values
+func (game *Game) PopulateGrid(unsolvedGrid []string) {
+	game.grid = new(Grid)
 
 	col := 0
 	row := 0
-	for _, v := range unsolvedFields {
+	for _, v := range unsolvedGrid {
 		for _, c := range v {
 			intVal := 0
 			if c != '-' {
 				intVal = int(c - '0')
 			}
-			game.gameArea.Fields[row][col] = Field{
-				Value:    intVal,
-				Possible: make([]int, 0, 9),
+			game.grid.Cells[row][col] = Cell{
+				Value: intVal,
 			}
 			col++
 			if col >= 9 {
@@ -29,5 +32,5 @@ func (game *Game) PopulateGameArea(unsolvedFields []string) {
 		}
 	}
 
-	fmt.Println(game.gameArea)
+	fmt.Println(game.grid)
 }

@@ -16,8 +16,9 @@ func main() {
 	}
 
 	unsolved := string(file)
-	unsolvedFields := strings.Fields(unsolved)
+	unsolvedGrid := strings.Fields(unsolved)
 
 	game := new(sudoku.Game)
-	game.PopulateGameArea(unsolvedFields)
+	game.PopulateGrid(unsolvedGrid)
+	game.Solve()
 }

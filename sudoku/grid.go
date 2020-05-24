@@ -4,16 +4,17 @@ import (
 	"bytes"
 )
 
-type GameArea struct {
-	Fields [9][9]Field
+// Grid holds all the cells
+type Grid struct {
+	Cells [9][9]Cell
 }
 
-func (gameArea *GameArea) String() string {
+func (grid *Grid) String() string {
 	var final bytes.Buffer
 
-	for row, fields := range gameArea.Fields {
-		for col, field := range fields {
-			final.WriteString(field.String())
+	for row, cells := range grid.Cells {
+		for col, cell := range cells {
+			final.WriteString(cell.String())
 			if (col+1)%3 == 0 {
 				final.WriteString(" ")
 			}
