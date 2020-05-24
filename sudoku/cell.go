@@ -5,8 +5,9 @@ import (
 )
 
 // Cell is a single square on the grid
+// For convinience of getting the string value
 type Cell struct {
-	Value    int
+	Value int
 }
 
 func (cell *Cell) String() string {
