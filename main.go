@@ -20,5 +20,7 @@ func main() {
 
 	game := new(sudoku.Game)
 	game.PopulateGrid(unsolvedGrid)
-	game.Solve()
+	solved := game.Solve()
+
+	fmt.Println(solved.String())
 }
