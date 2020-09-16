@@ -2,11 +2,12 @@ package main
 
 import (
 	"fmt"
-	"godoku/sudoku"
 	"io/ioutil"
 	"os"
 	"path/filepath"
 	"strings"
+
+	"wviiras/godoku/sudoku"
 )
 
 func main() {
